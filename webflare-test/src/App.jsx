@@ -6,12 +6,18 @@ import './App.css'
 import Button from 'react-bootstrap/Button'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [count, setCount] = useState(0);
+  
    // lots
+   const [totalLotCount, totalLots] = useState(0);
+   const [totalEstimatedValueLowerCount, totalEstimatedValueLower] = useState(0); {/* maybe eventually just make sql script to get this avoid startup calc?*/}
+   const [totalEstimatedValueUpperCount, totalEstimatedValueUpper] = useState(0);
 
   return (
     <>
+      {/*
+      From default Vite project
+
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -32,9 +38,9 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <Button>asdfasdfasdf</Button>
+      */}
     </>
   )
-}
+};
 
 export default App
