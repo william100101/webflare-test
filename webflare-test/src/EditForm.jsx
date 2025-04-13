@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form';
 
 
-function edit_form() {
+function EditForm() {
     const [formShow, setFormShow] =  useState(false);
 
     return (
@@ -87,4 +87,4 @@ function edit_form() {
     </div>);
 } 
 
-export default edit_form;
+export default EditForm;
