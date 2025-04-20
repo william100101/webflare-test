@@ -1,90 +1,51 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button'
-import ModalBody from 'react-bootstrap/esm/ModalBody';
-import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-
-function EditForm() {
-    const [formShow, setFormShow] =  useState(false);
-
+function EditForm({ formShow, setFormShow }) {
     return (
-    <div>
-
         <Modal
-            size = "lg"
-            show = {formShow}
-            onHide = {() => setFormShow(false)}>
-            
-            <Modal.Header closeButton/>
-            
+            size="lg"
+            show={formShow}
+            onHide={() => setFormShow(false)}
+        >
+            <Modal.Header closeButton>
+                <Modal.Title>Edit Lot</Modal.Title>
+            </Modal.Header>
             <Modal.Body>
-
                 <Form>
-                    <Form.Group controlId='edit_form.control_lot_number'> {/* Lot Number */}
-                        <Form.Label>
-                            Lot Number
-                        </Form.Label>
-                        <Form.Control as="textarea">
-
-                        </Form.Control>
+                    <Form.Group controlId="edit_form.control_lot_number">
+                        <Form.Label>Lot Number</Form.Label>
+                        <Form.Control type="text" placeholder="Enter lot number" />
                     </Form.Group>
-
-                    <Form.Group controlId='edit_form.control_lot_number'> {/* Title */}
-                        <Form.Label>
-                            Title
-                        </Form.Label>
-                        <Form.Control as="textarea">
-
-                        </Form.Control>
+                    <Form.Group controlId="edit_form.control_title">
+                        <Form.Label>Title</Form.Label>
+                        <Form.Control type="text" placeholder="Enter title" />
                     </Form.Group>
-
-                    <Form.Group controlId='edit_form.control_lot_number'> {/* Description */}
-                        <Form.Label>
-                            Description
-                        </Form.Label>
-                        <Form.Control as="textarea">
-
-                        </Form.Control>
+                    <Form.Group controlId="edit_form.control_description">
+                        <Form.Label>Description</Form.Label>
+                        <Form.Control as="textarea" rows={3} placeholder="Enter description" />
                     </Form.Group>
-
-                    <Form.Group controlId='edit_form.control_lot_number'> {/* Cosignor */}
-                        <Form.Label>
-                            Cosignor
-                        </Form.Label>
-                        <Form.Control as="textarea">
-
-                        </Form.Control>
+                    <Form.Group controlId="edit_form.control_consignor">
+                        <Form.Label>Consignor</Form.Label>
+                        <Form.Control type="text" placeholder="Enter consignor name" />
                     </Form.Group>
-
-                    <Form.Group controlId='edit_form.control_lot_number'> {/* Estimate */}
-                        <Form.Label>
-                            Estimate
-                        </Form.Label>
-                        <Form.Control as="textarea">
-
-                        </Form.Control>
+                    <Form.Group controlId="edit_form.control_estimate">
+                        <Form.Label>Estimate</Form.Label>
+                        <Form.Control type="text" placeholder="Enter estimate" />
                     </Form.Group>
-
-
                 </Form>
-
             </Modal.Body>
-
             <Modal.Footer>
-
-                <Button onClick={() => setFormShow(false)}> 
+                <Button variant="secondary" onClick={() => setFormShow(false)}>
                     Close
                 </Button>
-                <Button> {/* hook this up to edit call in server*/}
-                    Add Lot
+                <Button variant="primary"  onClick={() => setFormShow(false)}>
+                    Save Changes
                 </Button>
-
             </Modal.Footer>
-
         </Modal>
-
-    </div>);
-} 
+    );
+}
 
 export default EditForm;

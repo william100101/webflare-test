@@ -1,21 +1,13 @@
-import React, { useState } from 'react'; // Add useState import
-
-// Custom Components
-import EditForm from './EditForm'
-
-// Bootstraped components
+import React, { useState } from 'react';
+import EditForm from './EditForm';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 function LotTable() {
-    let salesCount = 1;
-
-    // List Comopnent Constants
-    const [totalListValues, totalListValuesSetter] = useState([]);
-    const [selectedListValues, selectedListValuesSetter] = useState([]);
-    
-    // Adding an item to the table
+    const [totalListValues, totalListValuesSetter] = useState([]); // To all list values
+    const [selectedListValues, selectedListValuesSetter] = useState([]); // To SELECTED list values
+    const [formShow, setFormShow] = useState(false); // To control visibility of the edit form
 
 
     return (
@@ -24,20 +16,20 @@ function LotTable() {
                 <thead>
                     <tr>
                         <th>
-                            <input type = "checkbox"/>
+                            <input type="checkbox" />
                         </th>
                         <th>Sales Order</th>
                         <th>#</th>
                         <th>Description</th>
-                        <th>Cosignor</th>
+                        <th>Consignor</th>
                         <th>Estimate</th>
                     </tr>
                 </thead>
-                <tbody> {/* sale order should be unique*/}
-                    {totalListValues.map((item, index) => ( 
+                <tbody>
+                    {totalListValues.map((item, index) => (
                         <tr key={index}>
                             <td>
-                                <input type = "checkbox"/>
+                                <input type="checkbox" />
                             </td>
                             <td>{item.salesOrder}</td>
                             <td>{item.number}</td>
@@ -50,24 +42,43 @@ function LotTable() {
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                    <Dropdown.Item>Edit</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => setFormShow(true)} variant="primary" style={{ marginTop: '10px' }}>Edit</Dropdown.Item>
                                     <Dropdown.Item>Duplicate</Dropdown.Item>
                                     <Dropdown.Item>Delete</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </tr>
                     ))}
+                        {/*
+                        <tr>
+                            <td>
+                                <input type="checkbox" />
+                            </td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>asdf</td>
+                            <td>adsf</td>
+                            <td>1</td>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                    Menu
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item onClick={() => setFormShow(true)} variant="primary" style={{ marginTop: '10px' }}>Edit</Dropdown.Item>
+                                    <Dropdown.Item>Duplicate</Dropdown.Item>
+                                    <Dropdown.Item>Delete</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </tr>*/}
                 </tbody>
             </Table>
-            <Button onClick={() =>
-                totalListValuesSetter([
-                    ...totalListValues,
-                    
-                ]
-                )
-            }/>
+
+            <Button onClick={() => setFormShow(true)} variant="primary" style={{ marginTop: '10px' }}>
                 Add New Lot
-            <Button/>
+            </Button>
+
+            <EditForm formShow={formShow} setFormShow={setFormShow} />
         </>
     );
 }
